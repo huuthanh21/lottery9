@@ -2,6 +2,7 @@
 import asyncComponentLoader from '@/utils/loader';
 import AddTaskIcon from '@mui/icons-material/AddTask';
 import BugReportIcon from '@mui/icons-material/BugReport';
+import CasinoIcon from '@mui/icons-material/Casino';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import HomeIcon from '@mui/icons-material/Home';
 import LooksOneIcon from '@mui/icons-material/LooksOne';
@@ -21,6 +22,12 @@ const routes: Routes = {
 		path: '/number-guessing',
 		title: 'Number Guessing',
 		icon: LooksOneIcon,
+	},
+	[Pages.SicBo]: {
+		component: asyncComponentLoader(() => import('@/pages/SicBo')),
+		path: '/sic-bo',
+		title: 'Sic Bo',
+		icon: CasinoIcon,
 	},
 	[Pages.Page1]: {
 		component: asyncComponentLoader(() => import('@/pages/Page1')),

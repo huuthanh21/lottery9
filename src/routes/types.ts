@@ -6,6 +6,7 @@ import { PathRouteProps } from 'react-router-dom';
 enum Pages {
 	Welcome,
 	NumberGuessing,
+	SicBo,
 	Page1,
 	Page2,
 	Page3,
