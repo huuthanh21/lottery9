@@ -14,6 +14,7 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
 import Tooltip from '@mui/material/Tooltip';
+import { Link } from 'react-router-dom';
 
 import { HotKeysButton } from './styled';
 import { getRandomJoke } from './utils';
@@ -89,6 +90,10 @@ function Header() {
 								<ThemeIcon />
 							</IconButton>
 						</Tooltip>
+						<Divider flexItem orientation="vertical" />
+						<Button color="info" component={Link} to="/login" variant="outlined">
+							Log in
+						</Button>
 					</FlexBox>
 				</Toolbar>
 			</AppBar>

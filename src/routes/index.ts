@@ -5,12 +5,24 @@ import BugReportIcon from '@mui/icons-material/BugReport';
 import CasinoIcon from '@mui/icons-material/Casino';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import HomeIcon from '@mui/icons-material/Home';
+import LoginIcon from '@mui/icons-material/Login';
 import LooksOneIcon from '@mui/icons-material/LooksOne';
 import TerrainIcon from '@mui/icons-material/Terrain';
 
 import { Pages, Routes } from './types';
 
 const routes: Routes = {
+	[Pages.Login]: {
+		component: asyncComponentLoader(() => import('@/pages/Login')),
+		path: '/login',
+		title: 'Login',
+		icon: LoginIcon,
+	},
+	[Pages.Register]: {
+		component: asyncComponentLoader(() => import('@/pages/Register')),
+		path: '/register',
+		title: 'Register',
+	},
 	[Pages.Welcome]: {
 		component: asyncComponentLoader(() => import('@/pages/Welcome')),
 		path: '/',
