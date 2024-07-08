@@ -7,7 +7,7 @@
 		"build": "tsc && vite build",
 		"preview": "vite preview",
 		"https-preview": "serve dist",
-		"prepare": "husky install && copy env\\.shared .env",
+		"prepare": "husky install && cp -n env/.shared .env &",
 		"prettier:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
 		"lint:check": "eslint --max-warnings=0 \"src/**/*.{js,jsx,ts,tsx,json}\"",
 		"ts:check": "tsc --noEmit",
