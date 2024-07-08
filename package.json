@@ -1,17 +1,7 @@
 {
-	"name": "react-pwa",
-	"version": "2.3.0",
+	"name": "lottery9",
+	"version": "1.0.0",
 	"type": "module",
-	"description": "Starter kit for modern web applications",
-	"homepage": "https://react-pwa.surenatoyan.com/",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/suren-atoyan/react-pwa.git"
-	},
-	"bugs": {
-		"url": "https://github.com/suren-atoyan/react-pwa/issues",
-		"email": "contact@surenatoyan.com"
-	},
 	"scripts": {
 		"dev": "vite",
 		"build": "tsc && vite build",
