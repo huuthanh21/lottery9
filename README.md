@@ -135,13 +135,13 @@ import { styled } from '@mui/material/styles';
 
 // styled-components
 const MyCoolButton = styled(Button)(({ theme }) => ({
-  marginRight: theme.spacing(1),
-  color: theme.palette.text.disabled,
+	marginRight: theme.spacing(1),
+	color: theme.palette.text.disabled,
 }));
 
 // sx prop
 function MyCoolComponent() {
-  return <Box sx={{ borderRadius: theme.shape.borderRadius }}>...</Box>;
+	return <Box sx={{ borderRadius: theme.shape.borderRadius }}>...</Box>;
 }
 ```
 
@@ -361,7 +361,3 @@ There are other scripts as well:
 <div>
  <img src="./public/demo-dark.png" width="280" title="Dark demo"> <img src="./public/demo-light.png" width="280" title="Light demo">
 </div>
-
-## License
-
-[MIT](./LICENSE)

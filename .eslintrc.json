@@ -6,10 +6,11 @@
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:perfectionist/recommended-natural"
   ],
   "parser": "@typescript-eslint/parser",
-  "plugins": ["react", "react-hooks", "@typescript-eslint"],
+  "plugins": ["react", "react-hooks", "@typescript-eslint", "perfectionist"],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
