@@ -1,7 +1,6 @@
 import { FlexBox } from '@/components/styled';
 import { repository, title } from '@/config';
 import useHotKeysDialog from '@/store/hotkeys';
-import useNotifications from '@/store/notifications';
 import useSidebar from '@/store/sidebar';
 import useTheme from '@/store/theme';
 import GitHubIcon from '@mui/icons-material/GitHub';
@@ -14,31 +13,15 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
 import Tooltip from '@mui/material/Tooltip';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { HotKeysButton } from './styled';
-import { getRandomJoke } from './utils';
 
 function Header() {
 	const [, sidebarActions] = useSidebar();
 	const [theme, themeActions] = useTheme();
-	const [, notificationsActions] = useNotifications();
 	const [, hotKeysDialogActions] = useHotKeysDialog();
-
-	function showNotification() {
-		notificationsActions.push({
-			message: getRandomJoke(),
-			options: {
-				// Show fully customized notification
-				// Usually, to show a notification, you'll use something like this:
-				// notificationsActions.push({ message: ... })
-				// `message` accepts string as well as ReactNode
-				// If you want to show a fully customized notification, you can define
-				// your own `variant`s, see @/sections/Notifications/Notifications.tsx
-				variant: 'customNotification',
-			},
-		});
-	}
+	const navigate = useNavigate();
 
 	return (
 		<Box data-pw={`theme-${theme}`} sx={{ flexGrow: 1 }}>
@@ -55,7 +38,7 @@ function Header() {
 						>
 							<MenuIcon />
 						</IconButton>
-						<Button color="info" onClick={showNotification}>
+						<Button color="info" onClick={() => navigate('/')}>
 							{title}
 						</Button>
 					</FlexBox>

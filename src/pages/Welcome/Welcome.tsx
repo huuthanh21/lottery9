@@ -12,25 +12,25 @@ import viteLogo from './logos/vite.svg';
 import { Image } from './styled';
 
 function Welcome() {
-  const isPortrait = useOrientation();
+	const isPortrait = useOrientation();
 
-  const width = isPortrait ? '40%' : '30%';
-  const height = isPortrait ? '30%' : '40%';
+	const width = isPortrait ? '40%' : '30%';
+	const height = isPortrait ? '30%' : '40%';
 
-  return (
-    <>
-      <Meta title="Welcome" />
-      <FullSizeCenteredFlexBox flexDirection={isPortrait ? 'column' : 'row'}>
-        <Image alt="react-router" src={rrLogo} />
-        <Image alt="vite" src={viteLogo} />
-        <Image alt="typescript" src={tsLogo} />
-        <Image alt="react" src={reactLogo} sx={{ width, height }} />
-        <Image alt="mui" src={muiLogo} />
-        <Image alt="recoil" src={recoilLogo} />
-        <Image alt="pwa" src={pwaLogo} />
-      </FullSizeCenteredFlexBox>
-    </>
-  );
+	return (
+		<>
+			<Meta title="Welcome" />
+			<FullSizeCenteredFlexBox flexDirection={isPortrait ? 'column' : 'row'}>
+				<Image alt="react-router" src={rrLogo} />
+				<Image alt="vite" src={viteLogo} />
+				<Image alt="typescript" src={tsLogo} />
+				<Image alt="react" src={reactLogo} sx={{ height, width }} />
+				<Image alt="mui" src={muiLogo} />
+				<Image alt="recoil" src={recoilLogo} />
+				<Image alt="pwa" src={pwaLogo} />
+			</FullSizeCenteredFlexBox>
+		</>
+	);
 }
 
 export default Welcome;
