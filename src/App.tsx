@@ -7,6 +7,7 @@ import Notifications from '@/sections/Notifications';
 import SW from '@/sections/SW';
 import Sidebar from '@/sections/Sidebar';
 import CssBaseline from '@mui/material/CssBaseline';
+import { PolygonAmoyTestnet } from '@thirdweb-dev/chains';
 import {
 	ThirdwebProvider,
 	coinbaseWallet,
@@ -19,7 +20,8 @@ import { BrowserRouter } from 'react-router-dom';
 function App() {
 	return (
 		<ThirdwebProvider
-			clientId="your-client-id-here"
+			activeChain={PolygonAmoyTestnet}
+			clientId="4b769b84ce03e52e2df9972a6f135097"
 			supportedWallets={[
 				metamaskWallet({
 					recommended: true,

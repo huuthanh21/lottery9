@@ -22,9 +22,15 @@ const WalletConnectButton: React.FC = () => {
 	useEffect(() => {
 		const fetchBalance = async () => {
 			if (address) {
-				const provider = new ethers.providers.Web3Provider(window.ethereum);
-				const balance = await provider.getBalance(address);
-				setBalance(ethers.utils.formatEther(balance));
+				try {
+					const provider = new ethers.providers.JsonRpcProvider(
+						'https://rpc-amoy.polygon.technology/',
+					); // Use the correct RPC URL for Polygon Amoy Testnet
+					const balance = await provider.getBalance(address);
+					setBalance(ethers.utils.formatEther(balance));
+				} catch (error) {
+					console.error('Error fetching balance:', error);
+				}
 			}
 		};
 
@@ -69,7 +75,7 @@ const WalletConnectButton: React.FC = () => {
 						<MenuItem disableRipple>
 							<Box alignItems="center" display="flex">
 								<Typography sx={{ marginRight: 1 }} variant="body1">
-									Balance: {balance} ETH
+									Balance: {balance} MATIC
 								</Typography>
 								<Tooltip title="Copy to clipboard">
 									<IconButton onClick={() => handleCopy(balance)} size="small">
