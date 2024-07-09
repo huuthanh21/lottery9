@@ -23,6 +23,17 @@ const features = [
 ];
 
 const Features = () => {
+	const handleHover = (event: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
+		const target = event.currentTarget;
+		target.style.transform = 'scale(1.1)';
+		target.style.transition = 'transform 0.3s';
+	};
+
+	const handleHoverOut = (event: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
+		const target = event.currentTarget;
+		target.style.transform = 'scale(1)';
+	};
+
 	return (
 		<Container style={{ padding: '4rem 0' }}>
 			<Typography align="center" gutterBottom variant="h4">
@@ -31,12 +42,13 @@ const Features = () => {
 			<Grid container spacing={4}>
 				{features.map((feature, index) => (
 					<Grid item key={index} md={4} sm={6} xs={12}>
-						<Card>
+						<Card style={{ cursor: 'pointer', overflow: 'hidden' }}>
 							<CardMedia
-								alt={feature.title}
 								component="img"
 								height="140"
 								image={feature.image}
+								onMouseOut={handleHoverOut}
+								onMouseOver={handleHover}
 								title={feature.title}
 							/>
 							<CardContent>
