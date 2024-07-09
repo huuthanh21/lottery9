@@ -17,6 +17,8 @@ import {
 import { Fragment } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
+import Footer from './sections/Footer';
+
 function App() {
 	return (
 		<ThirdwebProvider
@@ -39,6 +41,7 @@ function App() {
 					<Header />
 					<Sidebar />
 					<Pages />
+					<Footer />
 				</BrowserRouter>
 			</Fragment>
 		</ThirdwebProvider>
