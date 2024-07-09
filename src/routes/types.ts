@@ -4,15 +4,9 @@ import { FC } from 'react';
 import { PathRouteProps } from 'react-router-dom';
 
 enum Pages {
-	Login,
-	Register,
 	Welcome,
 	NumberGuessing,
 	SicBo,
-	Page1,
-	Page2,
-	Page3,
-	Page4,
 	NotFound,
 }
 
