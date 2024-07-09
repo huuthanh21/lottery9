@@ -1,7 +1,7 @@
 type Actions = {
-  toggle: () => void;
-  close: () => void;
-  open: () => void;
+	close: () => void;
+	open: () => void;
+	toggle: () => void;
 };
 
 export type { Actions };
