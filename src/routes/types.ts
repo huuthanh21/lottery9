@@ -8,6 +8,7 @@ enum Pages {
 	NumberGuessing,
 	SicBo,
 	NotFound,
+	Lottery,
 }
 
 type PathRouteCustomProps = {
