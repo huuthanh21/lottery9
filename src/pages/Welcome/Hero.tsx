@@ -1,6 +1,8 @@
 import { Box, Button, Container, Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const Hero = () => {
+	const naviagte = useNavigate();
 	return (
 		<Box
 			style={{
@@ -33,7 +35,13 @@ const Hero = () => {
 				<Typography paragraph variant="h5">
 					Play and win big! Join now to start your winning streak.
 				</Typography>
-				<Button color="primary" variant="contained">
+				<Button
+					color="primary"
+					onClick={() => {
+						naviagte('/lottery');
+					}}
+					variant="contained"
+				>
 					Get Started
 				</Button>
 			</Container>

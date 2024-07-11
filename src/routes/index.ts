@@ -25,6 +25,12 @@ const routes: Routes = {
 		title: 'Sic Bo',
 		icon: CasinoIcon,
 	},
+	[Pages.Lottery]: {
+		component: asyncComponentLoader(() => import('@/pages/Lottery')),
+		path: '/lottery',
+		title: 'Lottery',
+		icon: CasinoIcon,
+	},
 	[Pages.NotFound]: {
 		component: asyncComponentLoader(() => import('@/pages/NotFound')),
 		path: '*',
