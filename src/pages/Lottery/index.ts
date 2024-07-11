@@ -1,2 +1,2 @@
-import CountdownTimer from './CountdownTimer';
-export default CountdownTimer;
+import AdminControls from './AdminControl';
+export default AdminControls;
