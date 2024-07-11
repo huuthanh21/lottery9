@@ -76,7 +76,7 @@ const AdminControls: React.FC = () => {
 		});
 
 		try {
-			await DrawWinnerTicket({ args: [] });
+			await RefundAll({ args: [] });
 
 			actions.remove(notification);
 
@@ -162,7 +162,7 @@ const AdminControls: React.FC = () => {
 		});
 
 		try {
-			const data = await RefundAll({ args: [] });
+			const data = await restartDraw({ args: [] });
 
 			actions.remove(notification);
 			actions.push({

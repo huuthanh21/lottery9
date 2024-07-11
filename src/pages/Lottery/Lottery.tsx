@@ -70,13 +70,12 @@ const Lottery: React.FC = () => {
 
 		try {
 			await BuyTickets({
-				args: [
-					{
-						value: ethers.utils.parseEther(
-							(Number(ethers.utils.formatEther(ticketPrice)) * quantity).toString(),
-						),
-					},
-				],
+				args: [],
+				overrides: {
+					value: ethers.utils.parseEther(
+						(Number(ethers.utils.formatEther(ticketPrice)) * quantity).toString(),
+					),
+				},
 			});
 
 			actions.remove(notification);
