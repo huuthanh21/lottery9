@@ -1,2 +1,2 @@
-import AdminControls from './AdminControl';
-export default AdminControls;
+import Lottery from './Lottery';
+export default Lottery;

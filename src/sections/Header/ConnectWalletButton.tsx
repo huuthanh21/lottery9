@@ -1,3 +1,4 @@
+import { currency } from '@/constants';
 import useNotifications from '@/store/notifications';
 import { ContentCopy } from '@mui/icons-material';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -75,7 +76,7 @@ const WalletConnectButton: React.FC = () => {
 						<MenuItem disableRipple>
 							<Box alignItems="center" display="flex">
 								<Typography sx={{ marginRight: 1 }} variant="body1">
-									Balance: {balance} MATIC
+									Balance: {balance} {currency}
 								</Typography>
 								<Tooltip title="Copy to clipboard">
 									<IconButton onClick={() => handleCopy(balance)} size="small">

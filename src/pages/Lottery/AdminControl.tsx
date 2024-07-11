@@ -1,3 +1,4 @@
+import { currency } from '@/constants';
 import useNotifications from '@/store/notifications';
 import CurrencyDollarIcon from '@mui/icons-material/AttachMoney';
 import ArrowPathIcon from '@mui/icons-material/Autorenew';
@@ -6,8 +7,6 @@ import { Box, Button, CircularProgress, Typography } from '@mui/material';
 import { useContract, useContractRead, useContractWrite } from '@thirdweb-dev/react';
 import { ethers } from 'ethers';
 import React from 'react';
-
-const currency = 'MATIC';
 
 const AdminControls: React.FC = () => {
 	const contractAddress = import.meta.env.VITE_LOTTERY_CONTRACT_ADDRESS as string;
@@ -72,7 +71,6 @@ const AdminControls: React.FC = () => {
 					horizontal: 'center',
 					vertical: 'top',
 				},
-				persist: true,
 				variant: 'info',
 			},
 		});
@@ -116,7 +114,6 @@ const AdminControls: React.FC = () => {
 					horizontal: 'center',
 					vertical: 'top',
 				},
-				persist: true,
 				variant: 'info',
 			},
 		});
@@ -160,7 +157,6 @@ const AdminControls: React.FC = () => {
 					horizontal: 'center',
 					vertical: 'top',
 				},
-				persist: true,
 				variant: 'info',
 			},
 		});
