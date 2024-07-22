@@ -13,9 +13,11 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
 import Tooltip from '@mui/material/Tooltip';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 import WalletConnectButton from './ConnectWalletButton';
+import LanguageMenu from './LanguageMenu';
 // import { HotKeysButton } from './styled';
 
 function Header() {
@@ -23,6 +25,8 @@ function Header() {
 	const [theme, themeActions] = useTheme();
 	// const [, hotKeysDialogActions] = useHotKeysDialog();
 	const navigate = useNavigate();
+
+	const { t } = useTranslation('global');
 
 	return (
 		<Box data-pw={`theme-${theme}`} sx={{ flexGrow: 1 }}>
@@ -61,7 +65,7 @@ function Header() {
 									alt + k
 								</HotKeysButton> */}
 								<Button color="primary" onClick={() => navigate('/about')}>
-									About us
+									{t('aboutUs')}
 								</Button>
 							</Tooltip>
 						</FlexBox>
@@ -78,6 +82,8 @@ function Header() {
 							</IconButton>
 						</Tooltip>
 						<Divider flexItem orientation="vertical" />
+						<LanguageMenu />
+						<Divider flexItem orientation="vertical" />
 						<Tooltip arrow title="Switch theme">
 							<IconButton
 								color="primary"
@@ -85,6 +91,9 @@ function Header() {
 								edge="end"
 								onClick={themeActions.toggle}
 								size="large"
+								sx={{
+									marginX: 'auto',
+								}}
 							>
 								<ThemeIcon />
 							</IconButton>

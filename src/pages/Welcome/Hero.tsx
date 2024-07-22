@@ -1,9 +1,11 @@
 import { title } from '@/config';
 import { Box, Button, Container, Typography } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 const Hero = () => {
 	const naviagte = useNavigate();
+	const { t } = useTranslation('global');
 	return (
 		<Box
 			style={{
@@ -31,10 +33,10 @@ const Hero = () => {
 			/>
 			<Container style={{ position: 'relative', zIndex: 2 }}>
 				<Typography fontWeight={'bold'} gutterBottom variant="h2">
-					Welcome to {title}
+					{t('welcomeTo')} {title}
 				</Typography>
 				<Typography paragraph variant="h5">
-					Play and win big! Join now to start your winning streak.
+					{t('slogan')}
 				</Typography>
 				<Button
 					color="primary"
@@ -43,7 +45,7 @@ const Hero = () => {
 					}}
 					variant="contained"
 				>
-					Get Started
+					{t('getStarted')}
 				</Button>
 			</Container>
 		</Box>

@@ -15,6 +15,7 @@ import {
 import { useAddress, useContract, useContractRead, useContractWrite } from '@thirdweb-dev/react';
 import { ethers } from 'ethers';
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import LoginPrompt from '../LoginPrompt';
 import AdminControls from './AdminControl';
@@ -41,6 +42,8 @@ const Lottery: React.FC = () => {
 	const { data: lotteryOperator } = useContractRead(contract, 'lotteryOperator');
 	const { data: tickets } = useContractRead(contract, 'getTickets');
 	const [, actions] = useNotifications();
+
+	const { t } = useTranslation('global');
 
 	useEffect(() => {
 		if (!tickets) return;
@@ -179,10 +182,10 @@ const Lottery: React.FC = () => {
 						}}
 					>
 						<Typography sx={{ marginBottom: 1 }} variant="h6">
-							Last Winner: {lastWinner?.toString()}
+							{t('lastWinner')}: {lastWinner?.toString()}
 						</Typography>
 						<Typography variant="h6">
-							Previous Winnings:{' '}
+							{t('previousWinnings')}:{' '}
 							{lastWinnerAmount && ethers.utils.formatEther(lastWinnerAmount?.toString())}{' '}
 							{currency}
 						</Typography>
@@ -217,13 +220,13 @@ const Lottery: React.FC = () => {
 								variant="contained"
 							>
 								<Typography component="span" sx={{ fontWeight: 'bold' }} variant="h5">
-									Winner Winner Chicken Dinner
+									{t('winerwinerchickendinner')}
 								</Typography>
 								<Typography component="span" variant="h6">
-									Total Winnings: {ethers.utils.formatEther(winners.toString())} {currency}
+									{t('totalWinnings')}: {ethers.utils.formatEther(winners.toString())} {currency}
 								</Typography>
 								<Typography component="span" variant="body1">
-									Click Here to Withdraw
+									{t('clickHereToWithdraw')}
 								</Typography>
 							</Button>
 						</Box>
@@ -238,10 +241,10 @@ const Lottery: React.FC = () => {
 					>
 						<Grid item md={6} xs={12}>
 							<Paper elevation={3} sx={{ padding: 2, textAlign: 'center' }}>
-								<Typography variant="h4">The Next Draw</Typography>
+								<Typography variant="h4">{t('theNextDraw')}</Typography>
 								<Box display="flex" justifyContent="space-between" padding={2}>
 									<Box>
-										<Typography variant="h6">Total Pool</Typography>
+										<Typography variant="h6">{t('totalPool')}</Typography>
 										<Typography variant="h5">
 											{currentWinningReward &&
 												ethers.utils.formatEther(currentWinningReward.toString())}{' '}
@@ -249,7 +252,7 @@ const Lottery: React.FC = () => {
 										</Typography>
 									</Box>
 									<Box>
-										<Typography variant="h6">Tickets Remaining</Typography>
+										<Typography variant="h6">{t('ticketsRemaining')}</Typography>
 										<Typography variant="h5">{remainingTickets?.toNumber()}</Typography>
 									</Box>
 								</Box>
@@ -259,7 +262,7 @@ const Lottery: React.FC = () => {
 						<Grid item md={6} xs={12}>
 							<Paper elevation={3} sx={{ padding: 2 }}>
 								<Box alignItems="center" display="flex" justifyContent="space-between">
-									<Typography variant="h6">Price Per Ticket</Typography>
+									<Typography variant="h6">{t('pricePerTicket')}</Typography>
 									<Typography variant="h6">
 										{ticketPrice && ethers.utils.formatEther(ticketPrice?.toString())} {currency}
 									</Typography>
@@ -290,7 +293,7 @@ const Lottery: React.FC = () => {
 								<Box marginTop={2}>
 									<Box display="flex" justifyContent="space-between">
 										<Typography color="success.main" variant="body1">
-											Total cost tickets
+											{t('totalCostTickets')}
 										</Typography>
 										<Typography color="success.main" variant="body1">
 											{ticketPrice &&
@@ -300,7 +303,7 @@ const Lottery: React.FC = () => {
 									</Box>
 									<Box display="flex" justifyContent="space-between">
 										<Typography color="success.main" variant="body2">
-											Service fees
+											{t('serviceFee')}
 										</Typography>
 										<Typography color="success.main" variant="body2">
 											{ticketCommission && ethers.utils.formatEther(ticketCommission?.toString())}{' '}
@@ -309,7 +312,7 @@ const Lottery: React.FC = () => {
 									</Box>
 									<Box display="flex" justifyContent="space-between">
 										<Typography color="success.main" variant="body2">
-											+ Network Fees
+											{t('networkFee')}
 										</Typography>
 										<Typography color="success.main" variant="body2">
 											TBC
@@ -327,7 +330,7 @@ const Lottery: React.FC = () => {
 									sx={{ marginTop: 2 }}
 									variant="contained"
 								>
-									Buy {quantity} Tickets for{' '}
+									{t('buy')} {quantity} {t('tickets')} {t('for')}{' '}
 									{ticketPrice &&
 										Number(ethers.utils.formatEther(ticketPrice.toString())) * quantity}{' '}
 									{currency}
@@ -349,7 +352,7 @@ const Lottery: React.FC = () => {
 					</Grid>
 					<Box padding={2} textAlign="center">
 						<Typography color="text.secondary" variant="body2">
-							DISCLAIMER: This is not a REAL LOTTERY, it is a demo.
+							{t('disclaimer')}
 						</Typography>
 					</Box>
 				</Box>

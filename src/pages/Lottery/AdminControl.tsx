@@ -7,6 +7,7 @@ import { Box, Button, CircularProgress, Typography } from '@mui/material';
 import { useContract, useContractRead, useContractWrite } from '@thirdweb-dev/react';
 import { ethers } from 'ethers';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 const AdminControls: React.FC = () => {
 	const contractAddress = import.meta.env.VITE_LOTTERY_CONTRACT_ADDRESS as string;
@@ -19,6 +20,8 @@ const AdminControls: React.FC = () => {
 	const { mutateAsync: restartDraw } = useContractWrite(contract, 'restartDraw');
 	const { mutateAsync: WithdrawCommission } = useContractWrite(contract, 'WithdrawCommission');
 	const [, actions] = useNotifications();
+
+	const { t } = useTranslation('global');
 
 	const drawWinner = async () => {
 		const notification = actions.push({
@@ -210,10 +213,10 @@ const AdminControls: React.FC = () => {
 			}}
 		>
 			<Typography fontWeight="bold" variant="h5">
-				Admin Controls
+				{t('adminControls')}
 			</Typography>
 			<Typography sx={{ mb: 3 }} variant="body1">
-				Total Commission to be Withdrawn:{' '}
+				{t('totalCommissionToBeWithdrawn')}:{' '}
 				{operatorTotalCommission && ethers.utils.formatEther(operatorTotalCommission.toString())}{' '}
 				{currency}
 			</Typography>
@@ -224,7 +227,7 @@ const AdminControls: React.FC = () => {
 				justifyContent={'center'}
 			>
 				<Button color="primary" onClick={drawWinner} startIcon={<StarIcon />} variant="contained">
-					Draw Winner
+					{t('drawWinner')}
 				</Button>
 				<Button
 					color="primary"
@@ -232,7 +235,7 @@ const AdminControls: React.FC = () => {
 					startIcon={<CurrencyDollarIcon />}
 					variant="contained"
 				>
-					Withdraw Commission
+					{t('withdrawCommission')}
 				</Button>
 				<Button
 					color="primary"
@@ -240,7 +243,7 @@ const AdminControls: React.FC = () => {
 					startIcon={<ArrowPathIcon />}
 					variant="contained"
 				>
-					Restart Draw
+					{t('restartDraw')}
 				</Button>
 				<Button
 					color="primary"
@@ -248,7 +251,7 @@ const AdminControls: React.FC = () => {
 					startIcon={<ArrowPathIcon />}
 					variant="contained"
 				>
-					Refund All
+					{t('refundAll')}
 				</Button>
 			</Box>
 		</Box>

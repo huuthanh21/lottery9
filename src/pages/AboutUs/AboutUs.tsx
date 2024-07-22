@@ -1,6 +1,8 @@
 import Meta from '@/components/Meta';
+import { title } from '@/config';
 import { Box, Container, Grid, Paper, Typography } from '@mui/material';
 import { keyframes } from '@mui/system';
+import { useTranslation } from 'react-i18next';
 
 // Define keyframe animations
 const fadeIn = keyframes`
@@ -22,6 +24,7 @@ const slideIn = keyframes`
 `;
 
 const AboutUs = () => {
+	const { t } = useTranslation('global');
 	return (
 		<>
 			<Meta title="About Us" />
@@ -48,7 +51,7 @@ const AboutUs = () => {
 						}}
 						variant="h2"
 					>
-						About Crypto Lottery
+						{t('about')} {title}
 					</Typography>
 					<Typography
 						sx={{
@@ -60,11 +63,7 @@ const AboutUs = () => {
 						}}
 						variant="h5"
 					>
-						The Crypto Lottery project is a blockchain-based application that allows users to
-						participate in a lottery game using cryptocurrency. Users can buy lottery tickets,
-						withdraw winnings, and view lottery statistics. The project aims to leverage the
-						transparency and security features of blockchain technology to provide a fair and
-						decentralized lottery system.
+						{t('aboutMessage')}
 					</Typography>
 				</Box>
 
@@ -84,13 +83,13 @@ const AboutUs = () => {
 								Team
 							</Typography>
 							<Typography paragraph variant="body1">
-								<strong>20120454</strong> - Cong-Dat Le
+								<strong>20120454</strong> - {t('20120454')}
 								<br />
-								<strong>20120489</strong> - Phi-Hung Vo
+								<strong>20120489</strong> - {t('20120489')}
 								<br />
-								<strong>20120558</strong> - Ngoc-Quang Luu
+								<strong>20120558</strong> - {t('20120558')}
 								<br />
-								<strong>20120582</strong> - Huu-Thanh Tran
+								<strong>20120582</strong> - {t('20120582')}
 							</Typography>
 						</Paper>
 					</Grid>
@@ -110,11 +109,14 @@ const AboutUs = () => {
 								Instructor
 							</Typography>
 							<Typography variant="body1">
-								<strong>M.S. </strong>Van-Quy Tran
+								<strong>{t('ms')}</strong>
+								{t('vanQuyTran')}
 								<br />
-								<strong>M.S. </strong>Duy-Quang Tran
+								<strong>{t('ms')}</strong>
+								{t('duyQuangTran')}
 								<br />
-								<strong>M.S. </strong>Nguyen-Kha Do
+								<strong>{t('ms')}</strong>
+								{t('nguyenKhaDo')}
 							</Typography>
 						</Paper>
 					</Grid>
