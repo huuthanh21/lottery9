@@ -1,3 +1,4 @@
+import Footer from '@/sections/Footer';
 import Box from '@mui/material/Box';
 import { Route, Routes } from 'react-router-dom';
 
@@ -12,6 +13,7 @@ function Pages() {
 					return <Route element={<Component />} key={path} path={path} />;
 				})}
 			</Routes>
+			<Footer />
 		</Box>
 	);
 }

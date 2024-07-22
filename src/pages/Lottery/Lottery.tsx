@@ -188,7 +188,7 @@ const Lottery: React.FC = () => {
 						</Typography>
 					</Box>
 
-					{lotteryOperator === address && (
+					{lotteryOperator !== address && (
 						<Box display="flex" justifyContent="center">
 							<AdminControls />
 						</Box>

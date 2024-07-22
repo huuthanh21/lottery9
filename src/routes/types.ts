@@ -5,8 +5,8 @@ import { PathRouteProps } from 'react-router-dom';
 
 enum Pages {
 	Welcome,
-	NumberGuessing,
-	SicBo,
+	// NumberGuessing,
+	// SicBo,
 	NotFound,
 	Lottery,
 }
