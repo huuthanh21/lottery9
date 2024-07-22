@@ -167,17 +167,24 @@ const Lottery: React.FC = () => {
 				<Box sx={{ flex: 1 }}>
 					<Box
 						sx={{
+							alignItems: 'center',
+							backgroundColor: 'rgba(34, 197, 94, 0.1)',
 							border: '1px solid rgba(34, 197, 94, 0.2)',
+							borderRadius: 2,
 							display: 'flex',
+							flexDirection: 'column',
 							justifyContent: 'center',
-							marginBottom: 2,
-							padding: 2,
+							marginBottom: 3,
+							padding: 3,
 						}}
 					>
-						<Typography variant="h6">Last Winner: {lastWinner?.toString()}</Typography>
-						<Typography sx={{ marginLeft: 5 }} variant="h6">
-							Previous winnings:{' '}
-							{lastWinnerAmount && ethers.utils.formatEther(lastWinnerAmount?.toString())}
+						<Typography sx={{ marginBottom: 1 }} variant="h6">
+							Last Winner: {lastWinner?.toString()}
+						</Typography>
+						<Typography variant="h6">
+							Previous Winnings:{' '}
+							{lastWinnerAmount && ethers.utils.formatEther(lastWinnerAmount?.toString())}{' '}
+							{currency}
 						</Typography>
 					</Box>
 
