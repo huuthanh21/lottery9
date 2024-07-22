@@ -195,19 +195,36 @@ const Lottery: React.FC = () => {
 					)}
 
 					{winners > 0 && (
-						<Box margin="auto" marginTop={2} maxWidth="md">
+						<Box
+							sx={{
+								margin: 'auto',
+								marginTop: 2,
+								maxWidth: 'md',
+								textAlign: 'center',
+							}}
+						>
 							<Button
 								color="success"
 								fullWidth
 								onClick={onWithdrawWinning}
-								sx={{ animation: 'pulse 2s infinite', fontSize: '1.2rem', padding: 3 }}
+								sx={{
+									animation: 'pulse 2s infinite',
+									flexDirection: 'column',
+									fontSize: '1.2rem',
+									gap: 1,
+									padding: 3,
+								}}
 								variant="contained"
 							>
-								Winner Winner Chicken Dinner
-								<Typography variant="h6">
-									Total Winnings: {ethers.utils.formatEther(winners.toString())}
+								<Typography component="span" sx={{ fontWeight: 'bold' }} variant="h5">
+									Winner Winner Chicken Dinner
 								</Typography>
-								<Typography variant="body1">Click Here to Withdraw</Typography>
+								<Typography component="span" variant="h6">
+									Total Winnings: {ethers.utils.formatEther(winners.toString())} {currency}
+								</Typography>
+								<Typography component="span" variant="body1">
+									Click Here to Withdraw
+								</Typography>
 							</Button>
 						</Box>
 					)}
