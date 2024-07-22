@@ -2,7 +2,7 @@ import isMobile from '@/utils/is-mobile';
 
 import type { Notifications } from './types';
 
-const title = 'Lottery9';
+const title = 'Lottery Games';
 
 const email = 'auther-email@gmail.com';
 

@@ -31,7 +31,7 @@ function Header() {
 					<FlexBox sx={{ alignItems: 'center' }}>
 						<IconButton
 							aria-label="menu"
-							color="info"
+							color="primary"
 							edge="start"
 							onClick={sidebarActions.toggle}
 							size="large"
@@ -39,7 +39,7 @@ function Header() {
 						>
 							<MenuIcon />
 						</IconButton>
-						<Button color="info" onClick={() => navigate('/')}>
+						<Button color="primary" onClick={() => navigate('/')}>
 							{title}
 						</Button>
 					</FlexBox>
@@ -58,14 +58,20 @@ function Header() {
 						</FlexBox>
 						<Divider flexItem orientation="vertical" />
 						<Tooltip arrow title="Github Repo">
-							<IconButton color="info" component="a" href={repository} size="large" target="_blank">
+							<IconButton
+								color="primary"
+								component="a"
+								href={repository}
+								size="large"
+								target="_blank"
+							>
 								<GitHubIcon />
 							</IconButton>
 						</Tooltip>
 						<Divider flexItem orientation="vertical" />
 						<Tooltip arrow title="Switch theme">
 							<IconButton
-								color="info"
+								color="primary"
 								data-pw="theme-toggle"
 								edge="end"
 								onClick={themeActions.toggle}
