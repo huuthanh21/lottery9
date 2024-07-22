@@ -15,9 +15,10 @@ import {
 	walletConnect,
 } from '@thirdweb-dev/react';
 import { Fragment } from 'react';
+import { I18nextProvider } from 'react-i18next';
 import { BrowserRouter } from 'react-router-dom';
 
-import Footer from './sections/Footer';
+import i18next from './translations/i18';
 
 function App() {
 	return (
@@ -32,18 +33,20 @@ function App() {
 				walletConnect(),
 			]}
 		>
-			<Fragment>
-				<CssBaseline />
-				<Notifications />
-				<HotKeys />
-				<SW />
-				<BrowserRouter>
-					<Header />
-					<Sidebar />
-					<Pages />
-					<Footer />
-				</BrowserRouter>
-			</Fragment>
+			<I18nextProvider i18n={i18next}>
+				<Fragment>
+					<CssBaseline />
+					<Notifications />
+					<HotKeys />
+					<SW />
+
+					<BrowserRouter>
+						<Header />
+						<Sidebar />
+						<Pages />
+					</BrowserRouter>
+				</Fragment>
+			</I18nextProvider>
 		</ThirdwebProvider>
 	);
 }

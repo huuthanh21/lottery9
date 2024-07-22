@@ -3,10 +3,20 @@ import useNotifications from '@/store/notifications';
 import CurrencyDollarIcon from '@mui/icons-material/AttachMoney';
 import ArrowPathIcon from '@mui/icons-material/Autorenew';
 import StarIcon from '@mui/icons-material/Star';
-import { Box, Button, CircularProgress, Typography } from '@mui/material';
+import { Box, Button, CircularProgress, Typography, keyframes } from '@mui/material';
 import { useContract, useContractRead, useContractWrite } from '@thirdweb-dev/react';
 import { ethers } from 'ethers';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+
+const buttonHover = keyframes`
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+`;
 
 const AdminControls: React.FC = () => {
 	const contractAddress = import.meta.env.VITE_LOTTERY_CONTRACT_ADDRESS as string;
@@ -19,6 +29,8 @@ const AdminControls: React.FC = () => {
 	const { mutateAsync: restartDraw } = useContractWrite(contract, 'restartDraw');
 	const { mutateAsync: WithdrawCommission } = useContractWrite(contract, 'WithdrawCommission');
 	const [, actions] = useNotifications();
+
+	const { t } = useTranslation('global');
 
 	const drawWinner = async () => {
 		const notification = actions.push({
@@ -203,17 +215,32 @@ const AdminControls: React.FC = () => {
 	return (
 		<Box
 			sx={{
-				border: '1px solid rgba(34, 197, 94, 0.2)',
-				borderRadius: 1,
-				p: 3,
+				border: '1px solid rgba(34, 197, 94, 0.3)',
+				borderRadius: 2,
+				p: 4,
 				textAlign: 'center',
+				boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+				backgroundColor: 'background.paper',
+				transition: '0.3s',
+				'&:hover': {
+					boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)',
+				},
 			}}
 		>
-			<Typography fontWeight="bold" variant="h5">
-				Admin Controls
+			<Typography
+				fontWeight="bold"
+				sx={{
+					mb: 2,
+					color: 'primary.main',
+					textTransform: 'uppercase',
+					letterSpacing: '0.1em',
+				}}
+				variant="h5"
+			>
+				{t('adminControls')}
 			</Typography>
-			<Typography sx={{ mb: 3 }} variant="body1">
-				Total Commission to be Withdrawn:{' '}
+			<Typography color="text.primary" sx={{ mb: 4 }} variant="body1">
+				{t('totalCommissionToBeWithdrawn')}:{' '}
 				{operatorTotalCommission && ethers.utils.formatEther(operatorTotalCommission.toString())}{' '}
 				{currency}
 			</Typography>
@@ -222,33 +249,79 @@ const AdminControls: React.FC = () => {
 				flexDirection={{ md: 'row', xs: 'column' }}
 				gap={2}
 				justifyContent={'center'}
+				sx={{ flexWrap: 'wrap', mb: 2 }}
 			>
-				<Button color="primary" onClick={drawWinner} startIcon={<StarIcon />} variant="contained">
-					Draw Winner
+				<Button
+					color="primary"
+					onClick={drawWinner}
+					startIcon={<StarIcon />}
+					sx={{
+						animation: `${buttonHover} 0.3s ease-in-out`,
+						px: 3,
+						py: 1.5,
+						m: 1,
+						'&:hover': {
+							backgroundColor: 'primary.dark',
+							boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+						},
+					}}
+					variant="contained"
+				>
+					{t('drawWinner')}
 				</Button>
 				<Button
 					color="primary"
 					onClick={onWithdrawCommission}
 					startIcon={<CurrencyDollarIcon />}
+					sx={{
+						animation: `${buttonHover} 0.3s ease-in-out`,
+						px: 3,
+						py: 1.5,
+						m: 1,
+						'&:hover': {
+							backgroundColor: 'primary.dark',
+							boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+						},
+					}}
 					variant="contained"
 				>
-					Withdraw Commission
+					{t('withdrawCommission')}
 				</Button>
 				<Button
 					color="primary"
 					onClick={onRestartDraw}
 					startIcon={<ArrowPathIcon />}
+					sx={{
+						animation: `${buttonHover} 0.3s ease-in-out`,
+						px: 3,
+						py: 1.5,
+						m: 1,
+						'&:hover': {
+							backgroundColor: 'primary.dark',
+							boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+						},
+					}}
 					variant="contained"
 				>
-					Restart Draw
+					{t('restartDraw')}
 				</Button>
 				<Button
 					color="primary"
 					onClick={onRefundAll}
 					startIcon={<ArrowPathIcon />}
+					sx={{
+						animation: `${buttonHover} 0.3s ease-in-out`,
+						px: 3,
+						py: 1.5,
+						m: 1,
+						'&:hover': {
+							backgroundColor: 'primary.dark',
+							boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+						},
+					}}
 					variant="contained"
 				>
-					Refund All
+					{t('refundAll')}
 				</Button>
 			</Box>
 		</Box>

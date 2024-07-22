@@ -32,6 +32,11 @@ const sharedTheme = {
 			paper: '#fff',
 		},
 	},
+	typography: {
+		button: {
+			textTransform: 'none',
+		},
+	},
 } as ThemeOptions; // the reason for this casting is deepmerge return type
 // TODO (Suren): replace mui-utils-deepmerge with lodash or ramda deepmerge
 
@@ -44,7 +49,7 @@ const themes: Record<Themes, ThemeOptions> = {
 			},
 			mode: 'dark',
 			primary: {
-				main: '#d1b0f0',
+				main: '#03a9f4',
 			},
 		},
 	}),
@@ -57,7 +62,7 @@ const themes: Record<Themes, ThemeOptions> = {
 			},
 			mode: 'light',
 			primary: {
-				main: '#3f51b5',
+				main: '#01579b',
 			},
 		},
 	}),
