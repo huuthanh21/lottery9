@@ -190,26 +190,40 @@ const Lottery: React.FC = () => {
 					<Box
 						sx={{
 							alignItems: 'center',
-							backgroundColor: 'rgba(34, 197, 94, 0.1)',
-							border: '1px solid rgba(34, 197, 94, 0.2)',
+							backgroundColor: 'rgba(34, 197, 94, 0.15)', // Lightened background for better readability
+							border: '1px solid rgba(34, 197, 94, 0.3)', // Slightly darker border for contrast
 							borderRadius: 2,
 							display: 'flex',
 							flexDirection: 'column',
 							justifyContent: 'center',
 							marginBottom: 3,
 							padding: 3,
+							boxShadow: 2, // Adding shadow for a lifted effect
+							textAlign: 'center', // Center text alignment for a more balanced look
 						}}
 					>
-						<Typography sx={{ marginBottom: 1 }} variant="h6">
+						<Typography
+							sx={{
+								marginBottom: 1,
+								fontWeight: 'bold', // Added bold for emphasis
+								color: 'text.primary', // Ensuring text color adapts to theme
+							}}
+							variant="h6"
+						>
 							{t('lastWinner')}: {lastWinner?.toString()}
 						</Typography>
-						<Typography variant="h6">
+						<Typography
+							sx={{
+								fontWeight: 'bold', // Added bold for emphasis
+								color: 'text.secondary', // Different color for distinction
+							}}
+							variant="h6"
+						>
 							{t('previousWinnings')}:{' '}
 							{lastWinnerAmount && ethers.utils.formatEther(lastWinnerAmount?.toString())}{' '}
 							{currency}
 						</Typography>
 					</Box>
-
 					{lotteryOperator === address && (
 						<Box display="flex" justifyContent="center">
 							<AdminControls />
