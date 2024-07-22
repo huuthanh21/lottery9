@@ -1,3 +1,4 @@
+import { title } from '@/config';
 import { Box, Button, Container, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
@@ -30,7 +31,7 @@ const Hero = () => {
 			/>
 			<Container style={{ position: 'relative', zIndex: 2 }}>
 				<Typography fontWeight={'bold'} gutterBottom variant="h2">
-					Welcome to Lottery Games
+					Welcome to {title}
 				</Typography>
 				<Typography paragraph variant="h5">
 					Play and win big! Join now to start your winning streak.

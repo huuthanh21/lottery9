@@ -55,11 +55,13 @@ const WalletConnectButton: React.FC = () => {
 		<div>
 			{address ? (
 				<div>
-					<IconButton onClick={handleClick}>
-						<Avatar>
-							<AccountCircleIcon />
-						</Avatar>
-					</IconButton>
+					<Tooltip arrow title="Account">
+						<IconButton onClick={handleClick}>
+							<Avatar>
+								<AccountCircleIcon />
+							</Avatar>
+						</IconButton>
+					</Tooltip>
 					<Menu anchorEl={anchorEl} keepMounted onClose={handleClose} open={Boolean(anchorEl)}>
 						<MenuItem disableRipple>
 							<Box alignItems="center" display="flex">

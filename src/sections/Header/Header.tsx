@@ -1,6 +1,6 @@
 import { FlexBox } from '@/components/styled';
 import { repository, title } from '@/config';
-import useHotKeysDialog from '@/store/hotkeys';
+// import useHotKeysDialog from '@/store/hotkeys';
 import useSidebar from '@/store/sidebar';
 import useTheme from '@/store/theme';
 import GitHubIcon from '@mui/icons-material/GitHub';
@@ -16,12 +16,12 @@ import Tooltip from '@mui/material/Tooltip';
 import { useNavigate } from 'react-router-dom';
 
 import WalletConnectButton from './ConnectWalletButton';
-import { HotKeysButton } from './styled';
+// import { HotKeysButton } from './styled';
 
 function Header() {
 	const [, sidebarActions] = useSidebar();
 	const [theme, themeActions] = useTheme();
-	const [, hotKeysDialogActions] = useHotKeysDialog();
+	// const [, hotKeysDialogActions] = useHotKeysDialog();
 	const navigate = useNavigate();
 
 	return (
@@ -39,21 +39,30 @@ function Header() {
 						>
 							<MenuIcon />
 						</IconButton>
-						<Button color="primary" onClick={() => navigate('/')}>
+						<Button
+							color="primary"
+							onClick={() => navigate('/')}
+							sx={{
+								textTransform: 'uppercase',
+							}}
+						>
 							{title}
 						</Button>
 					</FlexBox>
 					<FlexBox>
 						<FlexBox>
-							<Tooltip arrow title="Hot keys">
-								<HotKeysButton
+							<Tooltip arrow title="About us">
+								{/* <HotKeysButton
 									aria-label="open hotkeys dialog"
 									onClick={hotKeysDialogActions.open}
 									size="small"
 									variant="outlined"
 								>
 									alt + k
-								</HotKeysButton>
+								</HotKeysButton> */}
+								<Button color="primary" onClick={() => navigate('/about')}>
+									About us
+								</Button>
 							</Tooltip>
 						</FlexBox>
 						<Divider flexItem orientation="vertical" />

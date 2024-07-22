@@ -1,3 +1,4 @@
+import { title } from '@/config';
 import { Box, Container, Typography } from '@mui/material';
 
 const Footer = () => {
@@ -15,7 +16,7 @@ const Footer = () => {
 		>
 			<Container maxWidth="md">
 				<Typography variant="body2">
-					© {new Date().getFullYear()} Lottery Games. Group 9. VNUHCM-US. All rights reserved.
+					© {new Date().getFullYear()} {title}. Group 9. VNUHCM-US. All rights reserved.
 				</Typography>
 				<Typography sx={{ display: 'block', mt: 1 }} variant="caption">
 					Designed with ❤️ by Group 9

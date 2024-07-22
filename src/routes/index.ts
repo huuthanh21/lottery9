@@ -4,6 +4,8 @@ import CasinoIcon from '@mui/icons-material/Casino';
 import HomeIcon from '@mui/icons-material/Home';
 // import LooksOneIcon from '@mui/icons-material/LooksOne';
 
+import { Info } from '@mui/icons-material';
+
 import { Pages, Routes } from './types';
 
 const routes: Routes = {
@@ -30,6 +32,12 @@ const routes: Routes = {
 		path: '/lottery',
 		title: 'Lottery',
 		icon: CasinoIcon,
+	},
+	[Pages.AboutUs]: {
+		component: asyncComponentLoader(() => import('@/pages/AboutUs')),
+		path: '/about',
+		title: 'About Us',
+		icon: Info,
 	},
 	[Pages.NotFound]: {
 		component: asyncComponentLoader(() => import('@/pages/NotFound')),
