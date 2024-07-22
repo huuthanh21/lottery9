@@ -11,6 +11,7 @@ import {
 	Paper,
 	TextField,
 	Typography,
+	keyframes,
 } from '@mui/material';
 import { useAddress, useContract, useContractRead, useContractWrite } from '@thirdweb-dev/react';
 import { ethers } from 'ethers';
@@ -21,6 +22,24 @@ import LoginPrompt from '../LoginPrompt';
 import AdminControls from './AdminControl';
 import CountdownTimer from './CountdownTimer';
 import Loading from './Loading';
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
+const slideIn = keyframes`
+  from {
+    transform: translateY(20px);
+  }
+  to {
+    transform: translateY(0);
+  }
+`;
 
 const Lottery: React.FC = () => {
 	const address = useAddress();
@@ -191,7 +210,7 @@ const Lottery: React.FC = () => {
 						</Typography>
 					</Box>
 
-					{lotteryOperator !== address && (
+					{lotteryOperator === address && (
 						<Box display="flex" justifyContent="center">
 							<AdminControls />
 						</Box>
@@ -237,15 +256,30 @@ const Lottery: React.FC = () => {
 						container
 						justifyContent="center"
 						spacing={3}
-						sx={{ marginTop: 2 }}
+						sx={{ marginTop: 2, animation: `${fadeIn} 1s ease-out` }}
 					>
 						<Grid item md={6} xs={12}>
-							<Paper elevation={3} sx={{ padding: 2, textAlign: 'center' }}>
-								<Typography variant="h4">{t('theNextDraw')}</Typography>
+							<Paper
+								elevation={3}
+								sx={{
+									padding: 3,
+									textAlign: 'center',
+									borderRadius: 2,
+									boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+									transition: '0.3s',
+									'&:hover': {
+										boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)',
+									},
+									animation: `${slideIn} 1s ease-out`,
+								}}
+							>
+								<Typography sx={{ mb: 2, color: 'primary.main' }} variant="h4">
+									{t('theNextDraw')}
+								</Typography>
 								<Box display="flex" justifyContent="space-between" padding={2}>
 									<Box>
 										<Typography variant="h6">{t('totalPool')}</Typography>
-										<Typography variant="h5">
+										<Typography sx={{ fontWeight: 'bold' }} variant="h5">
 											{currentWinningReward &&
 												ethers.utils.formatEther(currentWinningReward.toString())}{' '}
 											{currency}
@@ -253,28 +287,48 @@ const Lottery: React.FC = () => {
 									</Box>
 									<Box>
 										<Typography variant="h6">{t('ticketsRemaining')}</Typography>
-										<Typography variant="h5">{remainingTickets?.toNumber()}</Typography>
+										<Typography sx={{ fontWeight: 'bold' }} variant="h5">
+											{remainingTickets?.toNumber()}
+										</Typography>
 									</Box>
 								</Box>
 								<CountdownTimer />
 							</Paper>
 						</Grid>
 						<Grid item md={6} xs={12}>
-							<Paper elevation={3} sx={{ padding: 2 }}>
-								<Box alignItems="center" display="flex" justifyContent="space-between">
+							<Paper
+								elevation={3}
+								sx={{
+									padding: 3,
+									borderRadius: 2,
+									boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+									transition: '0.3s',
+									'&:hover': {
+										boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)',
+									},
+									animation: `${slideIn} 1s ease-out`,
+								}}
+							>
+								<Box
+									alignItems="center"
+									display="flex"
+									justifyContent="space-between"
+									sx={{ mb: 2 }}
+								>
 									<Typography variant="h6">{t('pricePerTicket')}</Typography>
-									<Typography variant="h6">
+									<Typography sx={{ fontWeight: 'bold' }} variant="h6">
 										{ticketPrice && ethers.utils.formatEther(ticketPrice?.toString())} {currency}
 									</Typography>
 								</Box>
 								<Box
 									alignItems="center"
 									border={1}
-									borderColor="#004337"
+									borderColor="divider"
 									display="flex"
 									gap={2}
 									marginY={2}
 									padding={2}
+									sx={{ borderRadius: 1, backgroundColor: 'background.default' }}
 								>
 									<Typography variant="body1">TICKET</Typography>
 									<TextField
@@ -327,7 +381,19 @@ const Lottery: React.FC = () => {
 									}
 									fullWidth
 									onClick={handleClick}
-									sx={{ marginTop: 2 }}
+									sx={{
+										marginTop: 2,
+										py: 1.5,
+										borderRadius: 1,
+										backgroundColor: 'primary.main',
+										color: 'white',
+										transition: '0.3s',
+										'&:hover': {
+											backgroundColor: 'primary.dark',
+											transform: 'scale(1.05)',
+											boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+										},
+									}}
 									variant="contained"
 								>
 									{t('buy')} {quantity} {t('tickets')} {t('for')}{' '}
@@ -335,19 +401,28 @@ const Lottery: React.FC = () => {
 										Number(ethers.utils.formatEther(ticketPrice.toString())) * quantity}{' '}
 									{currency}
 								</Button>
+								{userTicket > 0 && (
+									<Paper
+										elevation={3}
+										sx={{
+											marginTop: 2,
+											padding: 2,
+											borderRadius: 2,
+											boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+											animation: `${slideIn} 1s ease-out`,
+										}}
+									>
+										<Typography variant="h6">You have {userTicket} Tickets in this draw</Typography>
+										<Box display="flex" flexWrap="wrap" marginTop={2}>
+											{Array(userTicket)
+												.fill('')
+												.map((_, index) => (
+													<StarIcon color="primary" key={index} />
+												))}
+										</Box>
+									</Paper>
+								)}
 							</Paper>
-							{userTicket > 0 && (
-								<Paper elevation={3} sx={{ marginTop: 2, padding: 2 }}>
-									<Typography variant="h6">You have {userTicket} Tickets in this draw</Typography>
-									<Box display="flex" flexWrap="wrap" marginTop={2}>
-										{Array(userTicket)
-											.fill('')
-											.map((_, index) => (
-												<StarIcon color="primary" key={index} />
-											))}
-									</Box>
-								</Paper>
-							)}
 						</Grid>
 					</Grid>
 					<Box padding={2} textAlign="center">
