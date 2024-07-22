@@ -109,14 +109,11 @@ const AboutUs = () => {
 								Instructor
 							</Typography>
 							<Typography variant="body1">
-								<strong>{t('ms')}</strong>
-								{t('vanQuyTran')}
+								<strong>{t('ms')}</strong> {t('vanQuyTran')}
 								<br />
-								<strong>{t('ms')}</strong>
-								{t('duyQuangTran')}
+								<strong>{t('ms')}</strong> {t('duyQuangTran')}
 								<br />
-								<strong>{t('ms')}</strong>
-								{t('nguyenKhaDo')}
+								<strong>{t('ms')}</strong> {t('nguyenKhaDo')}
 							</Typography>
 						</Paper>
 					</Grid>
