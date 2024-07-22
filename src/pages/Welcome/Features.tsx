@@ -1,6 +1,32 @@
-import { Card, CardContent, CardMedia, Container, Grid, Typography } from '@mui/material';
-import React from 'react';
+import {
+	Card,
+	CardContent,
+	CardMedia,
+	Container,
+	Grid,
+	Typography,
+	keyframes,
+} from '@mui/material';
 import { useTranslation } from 'react-i18next';
+
+// Define keyframe animations
+const scaleUp = keyframes`
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+`;
+
+const textGradient = keyframes`
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+`;
 
 const Features = () => {
 	const { t } = useTranslation('global');
@@ -24,36 +50,80 @@ const Features = () => {
 			title: t('bigRewards'),
 		},
 	];
-	const handleHover = (event: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
-		const target = event.currentTarget;
-		target.style.transform = 'scale(1.1)';
-		target.style.transition = 'transform 0.3s';
-	};
-
-	const handleHoverOut = (event: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
-		const target = event.currentTarget;
-		target.style.transform = 'scale(1)';
-	};
 
 	return (
-		<Container style={{ padding: '4rem 0' }}>
-			<Typography align="center" gutterBottom variant="h4">
+		<Container sx={{ py: 8, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+			<Typography
+				align="center"
+				gutterBottom
+				sx={{
+					mb: 6,
+					background: 'linear-gradient(45deg, #00c6ff, #0072ff)',
+					backgroundClip: 'text',
+					color: 'transparent',
+					fontWeight: 'bold',
+					fontSize: '3rem',
+					textTransform: 'uppercase',
+					letterSpacing: '0.1em',
+					animation: `${textGradient} 3s linear infinite`,
+					position: 'relative',
+					display: 'inline-block',
+					'&::before': {
+						content: '""',
+						position: 'absolute',
+						bottom: '-10px',
+						left: '50%',
+						width: '50%',
+						height: '5px',
+						background: 'rgba(255, 255, 255, 0.5)',
+						borderRadius: '5px',
+						transform: 'translateX(-50%)',
+					},
+				}}
+				variant="h4"
+			>
 				{t('whyChooseUs')}
 			</Typography>
 			<Grid container spacing={4}>
 				{features.map((feature, index) => (
 					<Grid item key={index} md={4} sm={6} xs={12}>
-						<Card style={{ cursor: 'pointer', overflow: 'hidden' }}>
+						<Card
+							sx={{
+								transition: '0.3s',
+								'&:hover': {
+									boxShadow: '0 10px 20px rgba(0, 0, 0, 0.2)',
+									transform: 'translateY(-5px)',
+								},
+								overflow: 'hidden',
+								borderRadius: '8px',
+								cursor: 'pointer',
+								display: 'flex',
+								flexDirection: 'column',
+								height: '100%',
+							}}
+						>
 							<CardMedia
+								alt={feature.title}
 								component="img"
 								height="140"
 								image={feature.image}
-								onMouseOut={handleHoverOut}
-								onMouseOver={handleHover}
-								title={feature.title}
+								sx={{
+									transition: 'transform 0.3s ease',
+									'&:hover': {
+										animation: `${scaleUp} 0.3s ease-in-out`,
+									},
+								}}
 							/>
-							<CardContent>
-								<Typography component="h2" gutterBottom variant="h5">
+							<CardContent
+								sx={{
+									display: 'flex',
+									flexDirection: 'column',
+									justifyContent: 'center',
+									textAlign: 'center',
+									padding: 3,
+								}}
+							>
+								<Typography component="h2" gutterBottom sx={{ mb: 2 }} variant="h5">
 									{feature.title}
 								</Typography>
 								<Typography color="textSecondary" component="p" variant="body2">
